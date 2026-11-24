@@ -89,6 +89,12 @@
             <artifactId>rest-assured</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- UI automation (Section 3.6): Selenium; version managed by Spring Boot -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <scope>test</scope>
+        </dependency>
         <!-- BDD (Section 3.5): Cucumber with Spring and the JUnit Platform -->
         <dependency>
             <groupId>io.cucumber</groupId>
