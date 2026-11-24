@@ -35,7 +35,7 @@ Only part of the 25 proposed API cases is automated. Not automated: API-03 other
 
 | Run | Command | Result | File |
 |---|---|---|---|
-| 1 | `.\mvnw.cmd -B test -Dtest=PublicCareApiTest` | Build failed before any test ran: `bad class file ... NoSuchFileException` in `target/classes`. Cause: stale Maven `target/` after the `pom.xml` change. Not a code defect | `01a-run1-stale-target-build-failure.txt` |
+| 1 | `.\mvnw.cmd -B test -Dtest=PublicCareApiTest` | Build failed before any test ran: `bad class file ... NoSuchFileException` in `target/classes`. The error was at the `testCompile` step. Likely cause (inferred, not proven): class files missing from `target/classes` after the `pom.xml` change; the same command with `clean` then compiled the same test code and ran | `01a-run1-stale-target-build-failure.txt` |
 | 2 | `.\mvnw.cmd -B clean test -Dtest=PublicCareApiTest` | 8 tests, 1 failure: `duplicateEmailIsRejected` expected 409 but was 400 | `01b-run2-fail-duplicate-email-400.txt` |
 | 3 | `.\mvnw.cmd -B test -Dtest=PublicCareApiTest` | PASS: Tests run 9, Failures 0, Errors 0, Skipped 0 (the failing test was split into the two API-04 tests above) | `02-run3.txt` |
 | Full suite | `.\mvnw.cmd -B test` | BUILD SUCCESS: Tests run 91, Failures 0 (72 existing + 6 TDD + 4 Cucumber + 9 API) | `03-full-suite.txt` |
@@ -44,9 +44,9 @@ Surefire report for the API class: `surefire-reports/`.
 
 ## Finding: padded email gets 400, not 409 (API-04)
 
-The proposed API-04 expects 409 for a duplicate email "with different case or padding". Run 2 showed the padded case returns 400. Reason (from reading the code, then confirmed by the split test): `RegisterRequest.email` is validated with `@Email` before `AuthService.register` trims it, so an address with leading or trailing spaces fails validation. The different-case duplicate does return 409.
+The proposed API-04 expects 409 for a duplicate email "with different case or padding". Run 2 showed the padded case returns 400. Observed (confirmed by the split test): the padded email returns 400 and the different-case duplicate returns 409. Likely reason (from reading the code; the 400 response body was not inspected): `RegisterRequest.email` is validated with `@Email` before `AuthService.register` trims it, so an address with leading or trailing spaces fails validation.
 
-This is either an expected-result error in the test case or a behaviour that needs clarification with the project owner (RTM Q1). It is recorded here as a finding for the defect log, not as a confirmed defect. The test `emailWithSurroundingSpacesIsRejectedByValidation` documents the observed behaviour; it would need to change if the behaviour changes. FR-01.3 says the email is trimmed and lower-cased, which holds for the service but cannot be reached with padded input through the API.
+This is either an expected-result error in the test case or a behaviour that needs clarification with the project owner (not yet listed among the RTM open questions). It is recorded here as a finding for the defect log, not as a confirmed defect. The test `emailWithSurroundingSpacesIsRejectedByValidation` documents the observed behaviour; it would need to change if the behaviour changes. FR-01.3 says the email is trimmed and lower-cased, which holds for the service but cannot be reached with padded input through the API.
 
 ## Limitations
 

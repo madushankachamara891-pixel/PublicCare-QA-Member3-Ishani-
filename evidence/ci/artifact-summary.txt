@@ -1,0 +1,22 @@
+Artifact backend-test-reports.zip from GitHub Actions run 45326010526
+5e2ec554ba1894c1b280e3dbf6f41a2951c119ce173485bf8ffc3efeb8bd6c6f *-
+Per class: [tests, failures, errors, skipped]
+files: 33
+['surefire-reports/TEST-lk.publiccare.backend.bdd.RunCucumberTest.xml', 'surefire-reports/lk.publiccare.backend.bdd.RunCucumberTest.txt', 'cucumber-reports/cucumber.html', 'cucumber-reports/cucumber.json', 'cucumber-reports/cucumber.xml']
+AdminAccountSetupServiceTest [6, 0, 0, 0]
+AdminSetupConfigurationTest [1, 0, 0, 0]
+AdminSetupRunnerLoopbackTest [6, 0, 0, 0]
+PublicCareApiTest [9, 0, 0, 0]
+AuthControllerTest [7, 0, 0, 0]
+AuthServiceTest [4, 0, 0, 0]
+RunCucumberTest [4, 0, 0, 0]
+HealthControllerTest [3, 0, 0, 0]
+PublicReportServiceTest [3, 0, 0, 0]
+ReportControllerTest [25, 0, 0, 0]
+ReportDeletionJpaTest [1, 0, 0, 0]
+ReportDeletionServiceTest [4, 0, 0, 0]
+ReportImageServiceTest [5, 0, 0, 0]
+ReportProgressServiceTest [7, 0, 0, 0]
+ReportServiceTest [6, 0, 0, 0]
+TOTAL tests/fail/err/skip [91, 0, 0, 0]
+{('21.0.13', 'Eclipse Adoptium', 'Linux')}

@@ -7,7 +7,7 @@ Date: 2026-11-24. Java 25.0.5, Maven 3.9.16 (wrapper). Commands: `.\mvnw.cmd -B 
 | Step | What was done | Actual result | Evidence |
 |---|---|---|---|
 | Red 1 | Wrote `AdminSetupRunnerLoopbackTest` (6 tests) before touching application code | Compilation error: `isLoopbackPostgres` has private access | `01-red-compile-error.txt` |
-| Red 2 | Seam only: removed `private` from `isLoopbackPostgres` (no behaviour change) | Tests run: 6, Failures: 1. `ipv6LoopbackInBracketsIsLoopback`: expected true but was false. Bug confirmed | `02-red-assertion-failure.txt` |
+| Red 2 | Seam only: removed `private` from `isLoopbackPostgres` (no behaviour change) | Tests run: 6, Failures: 1. `ipv6LoopbackInBracketsIsLoopback`: expected true but was false. This confirms the observed behaviour (`[::1]` is rejected); whether IPv6 loopback is meant to be accepted is still open (RTM Q1) | `02-red-assertion-failure.txt` |
 | Green | Added `host.equals("[::1]")` to the host check | Tests run: 6, Failures: 0. BUILD SUCCESS | `03-green.txt` |
 | Refactor | Extracted `isLoopbackHost(String)` helper with a comment; behaviour unchanged | Full suite: Tests run: 78, Failures: 0, Errors: 0. BUILD SUCCESS (72 baseline + 6 new) | `04-refactor-full-suite.txt` |
 
@@ -17,14 +17,16 @@ Application files changed (both in `project/backend`):
 
 Limitation: runs were on Java 25, not the project's Java 21. The change is in the isolated QA copy only; per the test plan (7.11) the project owner would need to approve it for the original repository.
 
-## Step 1: Inspection of the existing backend JUnit tests (before choosing the TDD target)
+## Step 1: Inspection of the existing backend JUnit tests
 
-Location: `project/backend/src/test/java/lk/publiccare/backend/`. The existing tests were read and then run unchanged (see `../baseline/`: 72 tests, 0 failures).
+Timing: before choosing the target, the test classes were listed and `ReportServiceTest` and `AuthServiceTest` were looked at in part; the UT-14 gap came from the RTM. The per-class table and the check that no handover test referenced `AdminSetupRunner` (searched in commit `2c1e597`) were completed after the TDD cycle.
+
+Location: `project/backend/src/test/java/lk/publiccare/backend/`. The existing tests were inspected (two classes read in part and one in full; the rest checked by searching for annotations, mocks and test methods) and run unchanged (see `../baseline/`: 72 tests, 0 failures).
 
 | Package | Test class | Tests run (Surefire) | Style |
 |---|---|---|---|
 | admin | AdminAccountSetupServiceTest | 6 | Mockito unit test |
-| admin | AdminSetupConfigurationTest | 1 | Spring context test |
+| admin | AdminSetupConfigurationTest | 1 | Plain JUnit unit test (no Spring context) |
 | auth | AuthControllerTest | 7 | `@WebMvcTest` with Spring Security Test |
 | auth | AuthServiceTest | 4 | Mockito unit test |
 | health | HealthControllerTest | 3 | `@WebMvcTest` |
