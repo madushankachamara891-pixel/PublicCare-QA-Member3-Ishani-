@@ -71,3 +71,50 @@ jobs:
 
       - name: Run frontend build
         run: npm run build
+
+  ui:
+    name: UI tests (Selenium, headless Chrome)
+    runs-on: ubuntu-latest
+    env:
+      # Turns off Selenium Manager usage statistics.
+      SE_AVOID_STATS: 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: project/backend/pom.xml
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: project/package-lock.json
+
+      - name: Build the frontend
+        working-directory: project
+        run: |
+          npm ci
+          npm run build
+
+      - name: Run UI tests
+        working-directory: project/backend
+        run: |
+          chmod +x mvnw
+          ./mvnw -B test -Dtest=PublicCareUiIT
+
+      - name: Upload UI test reports and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ui-test-reports
+          path: |
+            project/backend/target/surefire-reports/
+            project/backend/target/ui-screenshots/
+          if-no-files-found: warn
