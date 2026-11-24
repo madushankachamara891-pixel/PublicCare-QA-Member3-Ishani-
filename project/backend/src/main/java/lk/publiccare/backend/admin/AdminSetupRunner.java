@@ -38,16 +38,21 @@ public class AdminSetupRunner implements ApplicationRunner {
                 : "Local administrator account was already configured; no changes made.");
     }
 
-    private static boolean isLoopbackPostgres(String jdbcUrl) {
+    static boolean isLoopbackPostgres(String jdbcUrl) {
         String prefix = "jdbc:";
         if (!jdbcUrl.startsWith(prefix)) return false;
         try {
             URI uri = URI.create(jdbcUrl.substring(prefix.length()));
-            String host = uri.getHost();
-            return "postgresql".equalsIgnoreCase(uri.getScheme()) && host != null
-                    && (host.equalsIgnoreCase("localhost") || host.equals("127.0.0.1") || host.equals("::1"));
+            return "postgresql".equalsIgnoreCase(uri.getScheme()) && isLoopbackHost(uri.getHost());
         } catch (IllegalArgumentException ex) {
             return false;
         }
+    }
+
+    // URI.getHost() returns IPv6 literals with brackets, e.g. "[::1]".
+    private static boolean isLoopbackHost(String host) {
+        return host != null
+                && (host.equalsIgnoreCase("localhost") || host.equals("127.0.0.1")
+                || host.equals("::1") || host.equals("[::1]"));
     }
 }
