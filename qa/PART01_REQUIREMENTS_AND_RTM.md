@@ -1,7 +1,7 @@
 # PublicCare – Part 01: Requirements and RTM (corrected working copy)
 
 > **Test execution status: PROPOSED / NOT EXECUTED.**
-> Every test case in this document (manual, automated UI, automated API, unit and integration) is a **proposal only**. When it was written, none of them had been run. **Execution update (Member 3, 2026-11-24):** 2 of the 79 cases have been executed in full (API-01, UT-14) and 7 in part (API-02, API-03, API-04, API-08, API-09, API-10, API-15); the status column of the TASK 6 inventory shows the real outcome, with evidence under `evidence/`. The other 70 remain PROPOSED / NOT EXECUTED. The requirement-level rows in TASK 5 were not re-evaluated and still show PROPOSED / NOT EXECUTED. The existing backend test suite (72 tests) was also run (`evidence/baseline/`) but is not mapped to individual cases here. The analysis comes from a read-only review of the source code. Nothing was built, run or installed. Where the table "Existing coverage" (TASK 6-D) says a test "Exists", that refers to a test class already in the code base. It does not mean the test was run for this assignment.
+> Every test case in this document (manual, automated UI, automated API, unit and integration) is a **proposal only**. When it was written, none of them had been run. **Execution update (Member 3, 2026-11-24):** 8 of the 79 cases have been executed in full (API-01, UT-14, UI-01 to UI-05, UI-13) and 7 in part (API-02, API-03, API-04, API-08, API-09, API-10, API-15); the status column of the TASK 6 inventory shows the real outcome, with evidence under `evidence/`. The other 64 remain PROPOSED / NOT EXECUTED. The requirement-level rows in TASK 5 were not re-evaluated and still show PROPOSED / NOT EXECUTED. The existing backend test suite (72 tests) was also run (`evidence/baseline/`) but is not mapped to individual cases here. The analysis comes from a read-only review of the source code. Nothing was built, run or installed. Where the table "Existing coverage" (TASK 6-D) says a test "Exists", that refers to a test class already in the code base. It does not mean the test was run for this assignment.
 
 ## About this document
 
@@ -582,11 +582,11 @@ P = positive, N = negative, B = boundary. All are **proposed**; those marked in 
 
 | TC ID | Scenario | Type | Status |
 |---|---|---|---|
-| UI-01 | Register form: name `maxLength` 120, password 11 rejected / 12 accepted / 72 accepted, mismatch rejected | B/N/P | PROPOSED / NOT EXECUTED |
-| UI-02 | Login redirect by role (citizen → `/my-reports`, admin → `/admin`) | P | PROPOSED / NOT EXECUTED |
-| UI-03 | Failed login shows `role=alert` with the generic message | N | PROPOSED / NOT EXECUTED |
-| UI-04 | Signed out on `/create-issue`: submit disabled and sign-in link visible | N | PROPOSED / NOT EXECUTED |
-| UI-05 | Create form: each required field empty blocks submit; all valid → success notice with reference | N/P | PROPOSED / NOT EXECUTED |
+| UI-01 | Register form: name `maxLength` 120, password 11 rejected / 12 accepted / 72 accepted, mismatch rejected | B/N/P | **EXECUTED: PASS** (2026-11-24, `evidence/ui-automation/`) |
+| UI-02 | Login redirect by role (citizen → `/my-reports`, admin → `/admin`) | P | **EXECUTED: PASS** (2026-11-24, `evidence/ui-automation/`) |
+| UI-03 | Failed login shows `role=alert` with the generic message | N | **EXECUTED: PASS** (2026-11-24, `evidence/ui-automation/`) |
+| UI-04 | Signed out on `/create-issue`: submit disabled and sign-in link visible | N | **EXECUTED: PASS** (2026-11-24, `evidence/ui-automation/`) |
+| UI-05 | Create form: each required field empty blocks submit; all valid → success notice with reference | N/P | **EXECUTED: PASS** (2026-11-24, `evidence/ui-automation/`) |
 | UI-06 | Image picker: invalid type, empty file and >5 MiB messages; preview + Remove photo; input disabled after submit | N/B/P | PROPOSED / NOT EXECUTED |
 | UI-07 | My Reports: status filter and search reset page to 0; counts render; Previous disabled on page 1; Next disabled on the last page | P/B | PROPOSED / NOT EXECUTED |
 | UI-08 | Issue details timeline classes for PENDING / IN_PROGRESS / RESOLVED (use mocked API responses) | P | PROPOSED / NOT EXECUTED |
@@ -594,7 +594,7 @@ P = positive, N = negative, B = boundary. All are **proposed**; those marked in 
 | UI-10 | Delete: dismissing the dialog keeps the row; accepting it removes the row; buttons disabled while pending | N/P | PROPOSED / NOT EXECUTED |
 | UI-11 | Admin update: note `maxLength` 1000; invalid photo type gives an error; "Mark as resolved" changes only the select; save appends a history item | B/N/P | PROPOSED / NOT EXECUTED |
 | UI-12 | Public section: empty state text; pagination only when `totalPages > 1`; card navigates to `/public-reports/{id}`; unknown ID shows "Report unavailable" | P/N | PROPOSED / NOT EXECUTED |
-| UI-13 | Citizen session on `/admin`, `/admin/issues`, `/admin/update-issue` shows the gate | N | PROPOSED / NOT EXECUTED |
+| UI-13 | Citizen session on `/admin`, `/admin/issues`, `/admin/update-issue` shows the gate | N | **EXECUTED: PASS** (2026-11-24, `evidence/ui-automation/`) |
 | UI-14 | Account menu: ArrowDown opens it and focuses the first item; Escape closes it and returns focus to the button | P | PROPOSED / NOT EXECUTED |
 
 ### C. Automated API testing (e.g. REST Assured / Postman + Newman)

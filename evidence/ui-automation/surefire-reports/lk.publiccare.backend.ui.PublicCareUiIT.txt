@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: lk.publiccare.backend.ui.PublicCareUiIT
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 36.12 s -- in lk.publiccare.backend.ui.PublicCareUiIT

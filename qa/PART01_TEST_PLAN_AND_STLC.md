@@ -1,7 +1,7 @@
 # PublicCare – Part 01: Introduction, Test Planning and STLC
 
 > **Test execution status: PROPOSED / NOT EXECUTED.**
-> This document is a plan. When it was written, no test case had been executed. **Execution update (Member 3, 2026-11-24):** 2 of the 79 cases have been executed in full (API-01, UT-14) and 7 in part (API-02, API-03, API-04, API-08, API-09, API-10, API-15); their Actual Result and Status fields in section 10.4 now hold the real results, with evidence under `evidence/`. The other 70 cases are still PROPOSED / NOT EXECUTED. The wording below about a plan that records no results applies to those 70 cases and to all quality attributes, which are still planned targets, not verified results. Every quality attribute below is a **planned testing target**, not a verified result. Items marked **[Proposed]** need agreement from the group. Items marked **To Be Confirmed (TBC)** are not supported by the source documents.
+> This document is a plan. When it was written, no test case had been executed. **Execution update (Member 3, 2026-11-24):** 8 of the 79 cases have been executed in full (API-01, UT-14, UI-01 to UI-05, UI-13) and 7 in part (API-02, API-03, API-04, API-08, API-09, API-10, API-15); their Actual Result and Status fields in section 10.4 now hold the real results, with evidence under `evidence/`. The other 64 cases are still PROPOSED / NOT EXECUTED. The wording below about a plan that records no results applies to those 64 cases and to all quality attributes, which are still planned targets, not verified results. Every quality attribute below is a **planned testing target**, not a verified result. Items marked **[Proposed]** need agreement from the group. Items marked **To Be Confirmed (TBC)** are not supported by the source documents.
 > QA activities must not change the original PublicCare application without the project owner's explicit approval (see §7.11).
 
 ## About this document
@@ -418,7 +418,7 @@ No dates are given in the assignment PDF or the source documents. The schedule b
 | Full-format test cases with actual results | All 79 cases written in §10.4; actual results pending execution |
 | Test data set and environment notes | Draft (§11, §12) |
 | Defect reports, RCA, bug life cycle | Not started |
-| Automation scripts, CI workflow, pipeline screenshots | Partly done (Member 3, 2026-11-24): Cucumber and REST Assured tests, GitHub Actions workflow and one successful CI run with screenshots; see `evidence/README.md`. No UI automation |
+| Automation scripts, CI workflow, pipeline screenshots | Partly done (Member 3, 2026-11-24): Cucumber, REST Assured and Selenium tests, GitHub Actions workflow and one documented successful CI run (before the UI job was added); see `evidence/README.md` |
 | JMeter, OWASP and SonarQube results | Not started |
 | Test summary report | Not started |
 
@@ -465,7 +465,7 @@ The assignment asks the group to map the STLC phases to the project: requirement
 | 1 | Requirement Analysis | Deliverables produced (source documents) |
 | 2 | Test Planning | Draft – this document |
 | 3 | Test Case Design | Test cases written – all 79 in the full format (§10.4); peer review pending; some expected results blocked pending confirmation |
-| 4 | Test Execution | Started: 2 cases executed in full and 7 in part (Member 3, 2026-11-24); the other 70 not executed |
+| 4 | Test Execution | Started: 8 cases executed in full and 7 in part (Member 3, 2026-11-24); the other 64 not executed |
 | 5 | Test Closure | Not started |
 
 ### 8.1 Phase 1 – Requirement Analysis
@@ -573,7 +573,7 @@ The RTM is in [PART01_REQUIREMENTS_AND_RTM.md – TASK 5: Initial Requirement Tr
 | RTM rows | **63** (58 FR rows + NFR-SEC, NFR-REL, NFR-USA, NFR-COMP, NFR-FUNC) |
 | Business rules | **28** (25 confirmed, 3 inferred or needing clarification). Not traced directly in the RTM |
 | Proposed test cases | **79**: 22 Manual (MT-01–MT-22), 14 Automated UI (UI-01–UI-14), 25 Automated API (API-01–API-25), 17 Unit (UT-01–UT-17), 1 Integration (INT-01) |
-| Test cases executed | **2** in full (API-01, UT-14) and **7** in part (API-02, API-03, API-04, API-08, API-09, API-10, API-15) as of 2026-11-24; **70** are PROPOSED / NOT EXECUTED |
+| Test cases executed | **8** in full (API-01, UT-14, UI-01 to UI-05, UI-13) and **7** in part (API-02, API-03, API-04, API-08, API-09, API-10, API-15) as of 2026-11-24; **64** are PROPOSED / NOT EXECUTED |
 | Existing backend test methods in the code base (separate from the 79) | 73 in 12 classes; not run for this assignment |
 
 The archived report states 59 requirements and 74 test cases. The first working copy corrected these to 58 and 75. The Part 01 review then split MT-12 (adding MT-20, MT-21, MT-22), added API-25 for the dashboard, split NFR-USA/COMP into NFR-USA and NFR-COMP, and added NFR-FUNC. The figures above are the current ones.
@@ -1019,8 +1019,8 @@ Cases that cannot start until a tool, environment or approval is available: UT-1
 | Test Data | TD-01 (name of 121 characters; passwords of 11, 12 and 72 characters; a new unused email for each accepted submission) |
 | Test Steps | 1. Open the registration page. 2. Type a 121-character name and read the field value. 3. Fill valid fields with an 11-character password and the same confirmation; submit. 4. Repeat with a 12-character password and a new email. 5. Repeat with a 72-character password and a new email. 6. Fill valid fields with a different confirmation value; submit |
 | Expected Result | Step 2: the field holds at most 120 characters. Step 3: client validation (`minLength`) blocks the submit and no account is created. Steps 4–5: the account is created, the message "Your Citizen account has been created…" is shown and the form is reset. Step 6: the submit is blocked with "Passwords do not match." |
-| Actual Result | NOT EXECUTED |
-| Status | PROPOSED / NOT EXECUTED |
+| Actual Result | Executed (`PublicCareUiIT.registrationBoundariesAndMismatch`, 2026-11-24): 121 characters typed, field held 120; 11-character password blocked and no account stored; 12 and 72 characters: account created, success message shown, email field emptied; different confirmation blocked with "Passwords do not match." and no account stored. Form reset was checked on the email field only. Environment: Selenium 4.31.0, Chrome 157 headless, Java 25.0.5, H2, local run. Evidence: `evidence/ui-automation/` |
+| Status | PASS (automated, 2026-11-24) |
 
 #### UI-02 – Login redirect by role (automated)
 
@@ -1034,8 +1034,8 @@ Cases that cannot start until a tool, environment or approval is available: UT-1
 | Test Data | TD-02 (Citizen A), TD-04 (Admin) |
 | Test Steps | 1. Open the sign-in page. 2. Sign in as Citizen A. 3. Assert the URL. 4. Log out. 5. Sign in as Admin. 6. Assert the URL |
 | Expected Result | Step 3: the URL path is `/my-reports`. Step 6: the URL path is `/admin` |
-| Actual Result | NOT EXECUTED |
-| Status | PROPOSED / NOT EXECUTED |
+| Actual Result | Executed (`PublicCareUiIT.loginRedirectsByRole`, 2026-11-24): citizen landed on `/my-reports`; after logging out through the account menu, admin landed on `/admin`. Environment: Selenium 4.31.0, Chrome 157 headless, Java 25.0.5, H2, local run. Evidence: `evidence/ui-automation/` |
+| Status | PASS (automated, 2026-11-24) |
 
 #### UI-03 – Failed login shows a generic alert (automated)
 
@@ -1049,8 +1049,8 @@ Cases that cannot start until a tool, environment or approval is available: UT-1
 | Test Data | TD-02 (Citizen A email with a wrong password); an unregistered email from TD-01 |
 | Test Steps | 1. Open the sign-in page. 2. Submit Citizen A's email with a wrong password. 3. Read the element with `role=alert`. 4. Submit an unregistered email with any password. 5. Read the element with `role=alert` |
 | Expected Result | Steps 3 and 5: an element with `role=alert` shows "Invalid email or password." The user stays signed out |
-| Actual Result | NOT EXECUTED |
-| Status | PROPOSED / NOT EXECUTED |
+| Actual Result | Executed (`PublicCareUiIT.failedLoginShowsGenericAlert`, 2026-11-24): a wrong password and an unregistered email both showed "Invalid email or password." in `role=alert`; the user stayed signed out. Environment: Selenium 4.31.0, Chrome 157 headless, Java 25.0.5, H2, local run. Evidence: `evidence/ui-automation/` |
+| Status | PASS (automated, 2026-11-24) |
 
 #### UI-04 – Signed-out user cannot submit a report (automated)
 
@@ -1064,8 +1064,8 @@ Cases that cannot start until a tool, environment or approval is available: UT-1
 | Test Data | None |
 | Test Steps | 1. Open `/create-issue` without signing in. 2. Check the state of the submit button. 3. Check for the sign-in notice and link |
 | Expected Result | The page opens (it is not gated). The submit button is disabled. The "Please sign in" notice and a sign-in link are visible |
-| Actual Result | NOT EXECUTED |
-| Status | PROPOSED / NOT EXECUTED |
+| Actual Result | Executed (`PublicCareUiIT.signedOutUserCannotSubmitReport`, 2026-11-24): the page opened, the submit button was disabled, and the sign-in notice and link were visible. Environment: Selenium 4.31.0, Chrome 157 headless, Java 25.0.5, H2, local run. Evidence: `evidence/ui-automation/` |
+| Status | PASS (automated, 2026-11-24) |
 
 #### UI-05 – Create-report required fields and successful submission (automated)
 
@@ -1079,8 +1079,8 @@ Cases that cannot start until a tool, environment or approval is available: UT-1
 | Test Data | TD-02 (Citizen A), TD-05 (valid report fields) |
 | Test Steps | 1. Open `/create-issue`. 2. For each required field in turn (title, category, description, location), fill the others with valid values, leave that field empty and submit; check that no create request is sent. 3. Fill all fields with valid values and submit. 4. Read the success notice |
 | Expected Result | Step 2: each empty required field blocks the submit and no report is created. Steps 3–4: a success notice is shown with a reference that matches `^PC-\d{8}$` |
-| Actual Result | NOT EXECUTED |
-| Status | PROPOSED / NOT EXECUTED |
+| Actual Result | Executed (`PublicCareUiIT.requiredFieldsAndSuccessfulReport`, 2026-11-24): each of the four empty required fields blocked the submit and no report was stored (checked in the database, not in network traffic); the valid report showed a reference matching `PC-` and 8 digits (H2 fallback format). Environment: Selenium 4.31.0, Chrome 157 headless, Java 25.0.5, H2, local run. Evidence: `evidence/ui-automation/` |
+| Status | PASS (automated, 2026-11-24) |
 
 #### UI-06 – Image picker checks, preview and removal (automated)
 
@@ -1199,8 +1199,8 @@ Cases that cannot start until a tool, environment or approval is available: UT-1
 | Test Data | TD-02 (Citizen A) |
 | Test Steps | 1. Open `/admin`; read the page. 2. Open `/admin/issues`; read the page. 3. Open `/admin/update-issue`; read the page |
 | Expected Result | Each page shows "Administrator access required". This gate is client-side only; server-side enforcement is checked by API-09 |
-| Actual Result | NOT EXECUTED |
-| Status | PROPOSED / NOT EXECUTED |
+| Actual Result | Executed (`PublicCareUiIT.adminPagesAreGatedForCitizen`, 2026-11-24): all three pages showed "Administrator access required". Environment: Selenium 4.31.0, Chrome 157 headless, Java 25.0.5, H2, local run. Evidence: `evidence/ui-automation/` |
+| Status | PASS (automated, 2026-11-24) |
 
 #### UI-14 – Account menu keyboard behaviour (automated)
 

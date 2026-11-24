@@ -53,4 +53,4 @@ This is either an expected-result error in the test case or a behaviour that nee
 - Run on Java 25, not Java 21. The Java 21 run was done later in CI (see `../ci/`): 91 tests, 0 failures.
 - H2 in MODE=PostgreSQL, not PostgreSQL. The `reference` check (`PC-########`) passes on H2 through the service's fallback format, because H2 does not generate the `reference` column that PostgreSQL generates (same limitation as the BDD evidence). It does not verify the database-generated value.
 - Image upload, public feed, deletion and progress-update endpoints are not covered.
-- No UI automation was done for this section yet; the decision on Selenium or Playwright is a separate step.
+- UI automation is recorded separately in `../ui-automation/`.

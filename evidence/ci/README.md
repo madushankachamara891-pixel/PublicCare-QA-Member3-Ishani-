@@ -21,6 +21,8 @@ Screenshots:
 - `github-actions-run-1-annotations-artifacts.png`: annotations and the uploaded artifact.
 - `github-actions-run-1-backend-log-91-tests.png`: the backend job log with the Maven test summary (91 tests, 0 failures, BUILD SUCCESS).
 
+The UI job (Selenium) was added to the workflow after run #1, so it is not part of this run.
+
 ## What the workflow runs
 
 | MEMBER_TASKS.md stage | Step in `ci.yml` |
