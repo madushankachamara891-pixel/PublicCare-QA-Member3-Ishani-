@@ -38,7 +38,7 @@ Cucumber reports from the full-suite run: `cucumber-reports/cucumber.html`, `cuc
 
 ## Limitations
 
-- Run on Java 25, not the project's Java 21. A Java 21 run happens in CI (section 3.6) and has not been done yet.
+- Run on Java 25, not the project's Java 21. The Java 21 run was done later in CI (see `../ci/`): 91 tests, 0 failures.
 - H2 in MODE=PostgreSQL, not PostgreSQL. Flyway migrations are disabled and Hibernate creates the schema, as in the existing `ReportDeletionJpaTest`. The test runs `alter table reports alter column reference drop not null` for the same reason as that test.
 - The reference check ("starts with PC-") passed on H2 through the service's fallback format (`PC-` plus an 8-digit id), because H2 does not generate the `reference` column that PostgreSQL generates. It does not verify the database-generated value; that needs a PostgreSQL integration test (INT-01, not done).
 - Requests go through MockMvc, not a real HTTP server, and there is no browser. UI behaviour (FR-01.6, FR-02.7) is not covered by these scenarios.
