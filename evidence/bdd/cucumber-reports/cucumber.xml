@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="6.795" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-11-24T03:41:59.124147200Z">
+<testcase classname="Administrator updates a report status" name="Administrator moves a pending report to in progress with a note" time="2.28">
+<system-out><![CDATA[
+Given a citizen has submitted a report titled "Pothole near the school".....passed
+And an administrator is logged in...........................................passed
+When the administrator sets the report status to "IN_PROGRESS" with the note "Repair crew assigned".passed
+Then the status update is accepted..........................................passed
+And the citizen sees the report status "IN_PROGRESS"........................passed
+And the citizen sees the administrator note "Repair crew assigned"..........passed
+]]></system-out>
+</testcase>
+<testcase classname="Administrator updates a report status" name="A citizen cannot change the status of a report" time="0.646">
+<system-out><![CDATA[
+Given a citizen has submitted a report titled "Overflowing bin".............passed
+When the citizen tries to set the report status to "RESOLVED"...............passed
+Then the request is rejected because access is denied.......................passed
+And the report status is still "PENDING" for the citizen....................passed
+]]></system-out>
+</testcase>
+<testcase classname="Citizen registers and submits a report" name="A new citizen registers, logs in and submits a report" time="0.64">
+<system-out><![CDATA[
+Given a visitor registers with the name "Nimali Perera" and a unique email..passed
+And the registration is accepted with the role "CITIZEN"....................passed
+And the citizen logs in with the registered email and password..............passed
+When the citizen submits a report titled "Broken streetlight" in the category "Streetlights" at "Galle Road, Colombo".passed
+Then the report is created..................................................passed
+And the report status is "PENDING"..........................................passed
+And the report reference starts with "PC-"..................................passed
+And the report belongs to the logged in citizen.............................passed
+]]></system-out>
+</testcase>
+<testcase classname="Citizen registers and submits a report" name="A visitor who is not logged in cannot submit a report" time="0.008">
+<system-out><![CDATA[
+Given a visitor who is not logged in........................................passed
+When the visitor submits a report titled "Blocked drain" in the category "Drainage" at "Main Street".passed
+Then the request is rejected because authentication is required.............passed
+]]></system-out>
+</testcase>
+</testsuite>
