@@ -1,7 +1,7 @@
 # PublicCare – Part 01: Requirements and RTM (corrected working copy)
 
 > **Test execution status: PROPOSED / NOT EXECUTED.**
-> Every test case in this document (manual, automated UI, automated API, unit and integration) is a **proposal only**. None of them have been run, and this document records no results, pass/fail data or defects. The analysis comes from a read-only review of the source code. Nothing was built, run or installed. Where the table "Existing coverage" (TASK 6-D) says a test "Exists", that refers to a test class already in the code base. It does not mean the test was run for this assignment.
+> Every test case in this document (manual, automated UI, automated API, unit and integration) is a **proposal only**. When it was written, none of them had been run. **Execution update (Member 3, 2026-11-24):** 2 of the 79 cases have been executed in full (API-01, UT-14) and 7 in part (API-02, API-03, API-04, API-08, API-09, API-10, API-15); the status column of the TASK 6 inventory shows the real outcome, with evidence under `evidence/`. The other 70 remain PROPOSED / NOT EXECUTED. The requirement-level rows in TASK 5 were not re-evaluated and still show PROPOSED / NOT EXECUTED. The existing backend test suite (72 tests) was also run (`evidence/baseline/`) but is not mapped to individual cases here. The analysis comes from a read-only review of the source code. Nothing was built, run or installed. Where the table "Existing coverage" (TASK 6-D) says a test "Exists", that refers to a test class already in the code base. It does not mean the test was run for this assignment.
 
 ## About this document
 
@@ -547,7 +547,7 @@ Testing types: **M** = Manual, **UI** = Automated UI, **API** = Automated API, *
 
 ## TASK 6: Test Case Candidates
 
-P = positive, N = negative, B = boundary. All are **proposed and not executed**. Tool suggestions (Playwright/Selenium, REST Assured/Postman, Vitest) are recommendations only; none are installed in the project.
+P = positive, N = negative, B = boundary. All are **proposed**; those marked in the status column (Member 3, 2026-11-24) have been executed in full or in part, all others are **not executed**. Tool suggestions (Playwright/Selenium, REST Assured/Postman, Vitest) are recommendations only; none are installed in the project.
 
 > **Status of all 79 test cases: PROPOSED / NOT EXECUTED.** 22 Manual (A), 14 Automated UI (B), 25 Automated API (C), 17 Unit (D), 1 Integration (E). *[Corrected: was 74 with no integration test; 75 in the first working copy. MT-20, MT-21, MT-22 (from the MT-12 split) and API-25 were added in the Part 01 review.]* The expected results below describe what the code *should* do according to the analysis. They are not observed results.
 
@@ -601,21 +601,21 @@ P = positive, N = negative, B = boundary. All are **proposed and not executed**.
 
 | TC ID | Scenario | Type | Expected | Status |
 |---|---|---|---|---|
-| API-01 | `GET /api/auth/csrf` | P | `200 {token}` + `XSRF-TOKEN` cookie | PROPOSED / NOT EXECUTED |
-| API-02 | Register valid, including `"role":"ADMIN"` in the body | P/N | `201`, `role=CITIZEN`, no `password`/`passwordHash` fields | PROPOSED / NOT EXECUTED |
-| API-03 | Register boundaries: name 120/121; password 11/12/72/73 chars; 37×"é" (74 bytes); email 254/255; blank and whitespace-only fields | B/N | Valid sizes `201`, invalid sizes `400` | PROPOSED / NOT EXECUTED |
-| API-04 | Duplicate email with different case or padding | N | `409` | PROPOSED / NOT EXECUTED |
+| API-01 | `GET /api/auth/csrf` | P | `200 {token}` + `XSRF-TOKEN` cookie | **EXECUTED: PASS** (2026-11-24, `evidence/api-automation/`) |
+| API-02 | Register valid, including `"role":"ADMIN"` in the body | P/N | `201`, `role=CITIZEN`, no `password`/`passwordHash` fields | **PARTIALLY EXECUTED** (steps 1-3 passed; 2026-11-24, `evidence/api-automation/`) |
+| API-03 | Register boundaries: name 120/121; password 11/12/72/73 chars; 37×"é" (74 bytes); email 254/255; blank and whitespace-only fields | B/N | Valid sizes `201`, invalid sizes `400` | **PARTIALLY EXECUTED** (password 11/12 only; 2026-11-24) |
+| API-04 | Duplicate email with different case or padding | N | `409` | **PARTIALLY EXECUTED** (case duplicate gave `409`; padded email gave `400`, expected `409`, to be clarified; 2026-11-24) |
 | API-05 | Register, login and logout without `X-XSRF-TOKEN`; as Citizen, POST and PUT on `/api/reports/**` without it; as Admin, POST, PATCH and DELETE on `/api/admin/reports/**` without it. Each request is repeated with a valid token as a control *[Corrected: scenario made specific]* | N | `403 {"error":"Access denied."}` without the token. The control request with a valid token does **not** return `403`. **Login, logout and PUT: expected `403` is derived from the configuration only and must be verified (Q7)** | PROPOSED / NOT EXECUTED |
 | API-06 | Valid login | P | `200`. `JSESSIONID` HttpOnly; SameSite=Lax. Session ID differs from the pre-login ID | PROPOSED / NOT EXECUTED |
 | API-07 | Wrong password vs unknown email; 73-byte password | N/B | Identical `401` bodies; `400` for 73 bytes | PROPOSED / NOT EXECUTED |
-| API-08 | `/me` without a session, with a session, and after logout | P/N | `401` / `200` / `401` | PROPOSED / NOT EXECUTED |
-| API-09 | Every `/api/admin/**` endpoint × {anonymous, citizen, admin} | N/P | `401` / `403` / `2xx` | PROPOSED / NOT EXECUTED |
-| API-10 | Create report (with an `ownerId` of another user in the body) | P/N | `201`, PENDING, reference matches `^PC-\d{8}$`, `ownerId` = session user | PROPOSED / NOT EXECUTED |
+| API-08 | `/me` without a session, with a session, and after logout | P/N | `401` / `200` / `401` | **PARTIALLY EXECUTED** (steps 1-2 passed; 2026-11-24) |
+| API-09 | Every `/api/admin/**` endpoint × {anonymous, citizen, admin} | N/P | `401` / `403` / `2xx` | **PARTIALLY EXECUTED** (one endpoint; 2026-11-24) |
+| API-10 | Create report (with an `ownerId` of another user in the body) | P/N | `201`, PENDING, reference matches `^PC-\d{8}$`, `ownerId` = session user | **PARTIALLY EXECUTED** (steps 1-2 passed; 2026-11-24) |
 | API-11 | Title 160/161, description 5000/5001, category 80/81, location 240/241, `"   "`, values with surrounding spaces | B/N | `201`/`400`. Stored values trimmed | PROPOSED / NOT EXECUTED |
 | API-12 | Image: valid JPG/PNG/WebP `204`; second upload `409`; GIF `400`; text renamed `.png` `400`; 0 B `400`; valid image at exactly 5,242,880 B `204`; 5,242,881 B `400`/`413`; >10 MP `400`; non-owner `404`; anonymous `401` | P/N/B | as listed | PROPOSED / NOT EXECUTED |
 | API-13 | Image GET headers and scope (owner, non-owner, admin route, no image) | P/N | `no-store`, `nosniff`, correct `Content-Type`; `404` for non-owner or missing | PROPOSED / NOT EXECUTED |
 | API-14 | `/mine` and `/admin/reports`: page −1; size 0/1/100/101; sort `foo`; status `in progress`/`ALL`/`DONE`; `q` matching reference; summary equals `totalElements`; citizen A cannot see B's reports | B/N/P | `400` for invalid input; correct filtering | PROPOSED / NOT EXECUTED |
-| API-15 | GET/PUT another user's report vs a non-existent ID; PUT on an approved report | N/P | Identical `404` bodies. Approval false afterwards; status unchanged | PROPOSED / NOT EXECUTED |
+| API-15 | GET/PUT another user's report vs a non-existent ID; PUT on an approved report | N/P | Identical `404` bodies. Approval false afterwards; status unchanged | **PARTIALLY EXECUTED** (GET part only; 2026-11-24) |
 | API-16 | PATCH status: null / `"DONE"` / note 1000 / note 1001 / same status / new status / null note | N/B/P | `400` for invalid input. Approval kept for the same status and revoked for a change. Null note clears it | PROPOSED / NOT EXECUTED |
 | API-17 | POST progress update: missing status; note 1000/1001; WebP photo; corrupt JPG; valid JPG | N/B/P | `400` for invalid input, **with no history row and no status change**; `201` for valid input; history oldest first | PROPOSED / NOT EXECUTED |
 | API-18 | Approvals: approve/revoke report, update and note; note approval on a blank note; update ID belonging to another report; body `{}` | P/N/B | `400` for blank note; `404` for mismatch; `{}` → `approved:false` (verify BR-22) | PROPOSED / NOT EXECUTED |
@@ -644,7 +644,7 @@ P = positive, N = negative, B = boundary. All are **proposed and not executed**.
 | UT-11 | `PublicReportService` | Note masked when not approved; size 24/25; unapproved detail → not found | Partial ([PublicReportServiceTest.java](../publiccare/backend/src/test/java/lk/publiccare/backend/report/PublicReportServiceTest.java)) | PROPOSED / NOT EXECUTED |
 | UT-12 | `PrivateImageStorage.resolve` | `../x.jpg`, `abc.jpg`, `.gif` extension, valid UUID key | **Gap** | PROPOSED / NOT EXECUTED |
 | UT-13 | `ReportDeletionService` | After-commit cleanup, missing report, DB failure, file-delete failure logged | Exists ([ReportDeletionServiceTest.java](../publiccare/backend/src/test/java/lk/publiccare/backend/report/ReportDeletionServiceTest.java)) | PROPOSED / NOT EXECUTED |
-| UT-14 | `AdminSetupRunner.isLoopbackPostgres` (private; needs refactor or reflection. A refactor changes application source and needs the project owner's approval *[Corrected]*) | `localhost`, `127.0.0.1`, `[::1]`, remote host, `jdbc:mysql:` | **Gap**. Verifies the IPv6 concern | PROPOSED / NOT EXECUTED |
+| UT-14 | `AdminSetupRunner.isLoopbackPostgres` (private; needs refactor or reflection. A refactor changes application source and needs the project owner's approval *[Corrected]*) | `localhost`, `127.0.0.1`, `[::1]`, remote host, `jdbc:mysql:` | **Gap**. Verifies the IPv6 concern | **EXECUTED** (`[::1]` false before the change, as expected after it in the QA copy; 2026-11-24, `evidence/tdd/`) |
 | UT-15 | `AdminAccountSetupService` | Missing fields, re-run idempotency, refuse citizen, refuse second admin | Exists | PROPOSED / NOT EXECUTED |
 | UT-16 | `reportsData.getStatusProgress` / `normalizeStatus`, `reportsApi.queryString`, `reportStatusLabel` (frontend) | Each status; `"in_progress"`, `"IN-PROGRESS"`, unknown; empty/null params dropped | **Gap** (needs Vitest) | PROPOSED / NOT EXECUTED |
 | UT-17 | `downloadCsv` escaping (frontend, would need to be exported. Exporting it and adding Vitest change the application and need the project owner's approval *[Corrected]*) | Values containing `"`, commas, newlines | **Gap** | PROPOSED / NOT EXECUTED |

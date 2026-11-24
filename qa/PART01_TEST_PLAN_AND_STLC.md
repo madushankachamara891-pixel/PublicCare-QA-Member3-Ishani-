@@ -1,7 +1,7 @@
 # PublicCare – Part 01: Introduction, Test Planning and STLC
 
 > **Test execution status: PROPOSED / NOT EXECUTED.**
-> This document is a plan. No test case has been executed, and it records no actual results, pass/fail data, defects or measured quality values. Every quality attribute below is a **planned testing target**, not a verified result. Items marked **[Proposed]** need agreement from the group. Items marked **To Be Confirmed (TBC)** are not supported by the source documents.
+> This document is a plan. When it was written, no test case had been executed. **Execution update (Member 3, 2026-11-24):** 2 of the 79 cases have been executed in full (API-01, UT-14) and 7 in part (API-02, API-03, API-04, API-08, API-09, API-10, API-15); their Actual Result and Status fields in section 10.4 now hold the real results, with evidence under `evidence/`. The other 70 cases are still PROPOSED / NOT EXECUTED. The wording below about a plan that records no results applies to those 70 cases and to all quality attributes, which are still planned targets, not verified results. Every quality attribute below is a **planned testing target**, not a verified result. Items marked **[Proposed]** need agreement from the group. Items marked **To Be Confirmed (TBC)** are not supported by the source documents.
 > QA activities must not change the original PublicCare application without the project owner's explicit approval (see §7.11).
 
 ## About this document
@@ -418,7 +418,7 @@ No dates are given in the assignment PDF or the source documents. The schedule b
 | Full-format test cases with actual results | All 79 cases written in §10.4; actual results pending execution |
 | Test data set and environment notes | Draft (§11, §12) |
 | Defect reports, RCA, bug life cycle | Not started |
-| Automation scripts, CI workflow, pipeline screenshots | Not started |
+| Automation scripts, CI workflow, pipeline screenshots | Partly done (Member 3, 2026-11-24): Cucumber and REST Assured tests, GitHub Actions workflow and one successful CI run with screenshots; see `evidence/README.md`. No UI automation |
 | JMeter, OWASP and SonarQube results | Not started |
 | Test summary report | Not started |
 
@@ -465,7 +465,7 @@ The assignment asks the group to map the STLC phases to the project: requirement
 | 1 | Requirement Analysis | Deliverables produced (source documents) |
 | 2 | Test Planning | Draft – this document |
 | 3 | Test Case Design | Test cases written – all 79 in the full format (§10.4); peer review pending; some expected results blocked pending confirmation |
-| 4 | Test Execution | Not started – no test case executed |
+| 4 | Test Execution | Started: 2 cases executed in full and 7 in part (Member 3, 2026-11-24); the other 70 not executed |
 | 5 | Test Closure | Not started |
 
 ### 8.1 Phase 1 – Requirement Analysis
@@ -573,7 +573,7 @@ The RTM is in [PART01_REQUIREMENTS_AND_RTM.md – TASK 5: Initial Requirement Tr
 | RTM rows | **63** (58 FR rows + NFR-SEC, NFR-REL, NFR-USA, NFR-COMP, NFR-FUNC) |
 | Business rules | **28** (25 confirmed, 3 inferred or needing clarification). Not traced directly in the RTM |
 | Proposed test cases | **79**: 22 Manual (MT-01–MT-22), 14 Automated UI (UI-01–UI-14), 25 Automated API (API-01–API-25), 17 Unit (UT-01–UT-17), 1 Integration (INT-01) |
-| Test cases executed | **0** – all are PROPOSED / NOT EXECUTED |
+| Test cases executed | **2** in full (API-01, UT-14) and **7** in part (API-02, API-03, API-04, API-08, API-09, API-10, API-15) as of 2026-11-24; **70** are PROPOSED / NOT EXECUTED |
 | Existing backend test methods in the code base (separate from the 79) | 73 in 12 classes; not run for this assignment |
 
 The archived report states 59 requirements and 74 test cases. The first working copy corrected these to 58 and 75. The Part 01 review then split MT-12 (adding MT-20, MT-21, MT-22), added API-25 for the dashboard, split NFR-USA/COMP into NFR-USA and NFR-COMP, and added NFR-FUNC. The figures above are the current ones.
@@ -1231,8 +1231,8 @@ Cases that cannot start until a tool, environment or approval is available: UT-1
 | Test Data | None |
 | Test Steps | 1. Send `GET /api/auth/csrf`. 2. Record the status code, the response body and the `Set-Cookie` headers |
 | Expected Result | `200` with a body `{token}` holding a non-empty token, and a `Set-Cookie` header for `XSRF-TOKEN` |
-| Actual Result | NOT EXECUTED |
-| Status | PROPOSED / NOT EXECUTED |
+| Actual Result | Executed by automation (REST Assured, `PublicCareApiTest.csrfEndpointReturnsTokenAndCookie`) on 2026-11-24: `200`, the body has a `token`, and the `XSRF-TOKEN` cookie is set. Environment: Spring Boot with a real server on a random port and H2, Java 25.0.5 locally; the same class also passed in GitHub Actions run #1 on Java 21. Evidence: `evidence/api-automation/`, `evidence/ci/` |
+| Status | PASS (automated, 2026-11-24) |
 
 #### API-02 – Registration creates a Citizen and returns no password data
 
@@ -1246,8 +1246,8 @@ Cases that cannot start until a tool, environment or approval is available: UT-1
 | Test Data | TD-01 (valid name, unused email, valid password) |
 | Test Steps | 1. Get a token with `GET /api/auth/csrf`. 2. Send `POST /api/auth/register` with the token and a body holding valid `fullName`, `email`, `password` and `"role":"ADMIN"`. 3. Record the status code and body. 4. Sign in with the new account and send `GET /api/auth/me`; record the role |
 | Expected Result | Step 3: `201 Created`; the body has `id`, `fullName`, `email`, `role` and `createdAt`; `role` is `CITIZEN`; there is no `password` or `passwordHash` field. Step 4: `role` is `CITIZEN` |
-| Actual Result | NOT EXECUTED |
-| Status | PROPOSED / NOT EXECUTED |
+| Actual Result | Partly executed (`registrationForcesCitizenRoleAndHidesPassword`, 2026-11-24). Steps 1-3: the request body contained `"role":"ADMIN"`; the response was `201`, `role` was `CITIZEN`, `email` was as sent, and there was no `password` or `passwordHash` field. Not checked: that the body has `id`, `fullName` and `createdAt`; step 4 (sign in and `GET /api/auth/me`) was not done for this account. Evidence: `evidence/api-automation/` |
+| Status | PARTIALLY EXECUTED (steps 1-3 passed, step 4 not executed) |
 
 #### API-03 – Registration input boundaries
 
@@ -1261,8 +1261,8 @@ Cases that cannot start until a tool, environment or approval is available: UT-1
 | Test Data | TD-01 (name 120/121 characters; password 11/12/72/73 characters; 37 × "é" (37 characters, 74 bytes); email 254/255 characters in a valid format; blank and whitespace-only values; a new email for each request) |
 | Test Steps | 1. For each value, send one registration request with that value and all other fields valid. 2. Record the status code and body of each |
 | Expected Result | Name 120: `201`; 121: `400`. Password 12 and 72: `201`; 11 and 73: `400`. 37 × "é": `400` (within the character limit but over 72 bytes). Email 254: `201`; 255: `400`. Blank and whitespace-only fields: `400`. Each `400` body carries the first field error (FR-01.2). The 254-character email depends on assumption A-3 (§12.4) |
-| Actual Result | NOT EXECUTED |
-| Status | PROPOSED / NOT EXECUTED |
+| Actual Result | Partly executed (`passwordLengthBoundary`, 2026-11-24): a password of 11 characters gave `400` and 12 characters gave `201`. Not executed: name 120/121, password 72/73, 37 x "e acute" (74 bytes), email 254/255, blank and whitespace-only values, and the check of the `400` body message. Evidence: `evidence/api-automation/` |
+| Status | PARTIALLY EXECUTED (password 11/12 only) |
 
 #### API-04 – Duplicate email with different case or padding
 
@@ -1276,8 +1276,8 @@ Cases that cannot start until a tool, environment or approval is available: UT-1
 | Test Data | TD-01 (an email in the form `" A@X.com "` on the test domain and a name with surrounding spaces; the same email in lower case, and in upper case with spaces) |
 | Test Steps | 1. Register with the padded mixed-case email and the padded name. 2. Record the `email` and `fullName` in the response. 3. Register again with the lower-case email. 4. Register again with the upper-case email with surrounding spaces. 5. Record each status code and body |
 | Expected Result | Steps 1–2: `201`; the email is lower-cased and trimmed and the name is trimmed (FR-01.3). Steps 3–4: `409` "An account with this email already exists." |
-| Actual Result | NOT EXECUTED |
-| Status | PROPOSED / NOT EXECUTED |
+| Actual Result | Partly executed (2026-11-24). `duplicateEmailWithDifferentCaseIsRejected`: after registering a lower-case email, the same email in upper case gave `409`. `emailWithSurroundingSpacesIsRejectedByValidation`: the same email with leading and trailing spaces gave `400`, not the expected `409`. Step 4 (upper case with surrounding spaces) was sent in an earlier run and also gave `400`, not `409` (`01b-run2-fail-duplicate-email-400.txt`). Not executed: steps 1-2 with a padded mixed-case email and padded name (normalisation of the stored email and name, FR-01.3). Deviation: the padded request is rejected with `400` before the duplicate check; likely because `@Email` validation runs before `AuthService` trims the value (inferred from the code; the `400` body was not inspected). No defect ID has been raised, so the status is not set to FAIL (section 10.3); the expected result needs clarification. Evidence: `evidence/api-automation/README.md` (Finding) |
+| Status | PARTIALLY EXECUTED (case duplicate: 409 as expected; padded email: 400, expected 409, to be clarified) |
 
 #### API-05 – State-changing requests without a CSRF token are rejected
 
@@ -1336,8 +1336,8 @@ Cases that cannot start until a tool, environment or approval is available: UT-1
 | Test Data | TD-02 (Citizen A) |
 | Test Steps | 1. Send `GET /api/auth/me` with no session. 2. Sign in as Citizen A and send `GET /api/auth/me`. 3. Send `POST /api/auth/logout` with a valid CSRF token. 4. Record the status code and `Set-Cookie` headers. 5. Send `GET /api/auth/me` with the same client |
 | Expected Result | Step 1: `401` `{"error":"Authentication required."}`. Step 2: `200` with Citizen A's user fields. Steps 3–4: `204`; the `JSESSIONID` and `XSRF-TOKEN` cookies are deleted. Step 5: `401` |
-| Actual Result | NOT EXECUTED |
-| Status | PROPOSED / NOT EXECUTED |
+| Actual Result | Partly executed (`meRequiresSession`, 2026-11-24). Step 1: `401` with the body `Authentication required.`. Step 2: after sign-in `200` with `role` `CITIZEN`. Not executed: steps 3-5 (logout, cookie deletion, `401` after logout). Evidence: `evidence/api-automation/` |
+| Status | PARTIALLY EXECUTED (steps 1-2 passed, steps 3-5 not executed) |
 
 #### API-09 – Authorisation matrix for every admin endpoint
 
@@ -1351,8 +1351,8 @@ Cases that cannot start until a tool, environment or approval is available: UT-1
 | Test Data | TD-02 (Citizen A), TD-04 (Admin), TD-06 (reports), TD-07 (progress update data), TD-08 (valid JPG) |
 | Test Steps | 1. List the admin endpoints from TASK 1: `GET /api/admin/reports`, `GET …/summary`, `GET …/{id}`, `GET …/{id}/image`, `GET …/{id}/progress-updates`, `GET …/progress-updates/{updateId}/image`, `POST …/{id}/progress-updates`, `PATCH …/{id}/status`, `PATCH …/{id}/public-approval`, `PATCH …/progress-updates/{updateId}/public-approval`, the note approval route (`…/note-public-approval`; exact path to be taken from `AdminReportController` during design) and `DELETE …/{id}`. 2. Send each as anonymous. 3. Send each as Citizen A. 4. Send each as Admin with valid data, running DELETE last. 5. Record each status code |
 | Expected Result | Anonymous: `401`. Citizen: `403`. Admin: `2xx`. Anonymous and citizen requests change no data |
-| Actual Result | NOT EXECUTED |
-| Status | PROPOSED / NOT EXECUTED |
+| Actual Result | Partly executed (`adminEndpointAuthorisationMatrix`, 2026-11-24), for one endpoint only, `GET /api/admin/reports`: anonymous `401`, citizen `403`, admin `200`. Not executed: the other admin endpoints and the check that anonymous and citizen requests change no data. Evidence: `evidence/api-automation/` |
+| Status | PARTIALLY EXECUTED (1 of 12 endpoints) |
 
 #### API-10 – Create report; owner is taken from the session
 
@@ -1366,8 +1366,8 @@ Cases that cannot start until a tool, environment or approval is available: UT-1
 | Test Data | TD-02 (Citizen A), TD-03 (Citizen B's ID), TD-04 (Admin), TD-05 (valid report fields) |
 | Test Steps | 1. As Citizen A, send `POST /api/reports` with valid title, category, description and location and `"ownerId": <Citizen B's ID>`. 2. Record the status code and body. 3. As Admin, send `GET /api/admin/reports/{id}` and record the owner name and ID |
 | Expected Result | Step 2: `201`; status `PENDING`; the reference matches `^PC-\d{8}$`; the owner name and timestamps are returned. Step 3: the owner is Citizen A (`ownerId` = session user), not Citizen B |
-| Actual Result | NOT EXECUTED |
-| Status | PROPOSED / NOT EXECUTED |
+| Actual Result | Partly executed (`createReportUsesSessionOwner`, 2026-11-24). Citizen A created a report with `"ownerId": 999999` in the body (a non-existent ID, not Citizen B's real ID): `201`, status `PENDING`, the reference matched `^PC-\d{8}$`, and `ownerId` in the response equalled Citizen A's ID. The reference check passed on H2 through the service's fallback format; PostgreSQL's generated value was not exercised. Not executed: step 3 (admin `GET /api/admin/reports/{id}`) and a foreign `ownerId` of a real user. Evidence: `evidence/api-automation/` |
+| Status | PARTIALLY EXECUTED (steps 1-2 passed with a non-existent foreign ownerId, step 3 not executed) |
 
 #### API-11 – Report field boundaries and trimming
 
@@ -1441,8 +1441,8 @@ Cases that cannot start until a tool, environment or approval is available: UT-1
 | Test Data | TD-02, TD-03, TD-04, TD-05 (valid changed values), TD-06 (approved report) |
 | Test Steps | 1. As Citizen A, send `GET /api/reports/{id}` for Citizen B's report and for the non-existent ID; compare. 2. As Citizen A, send `PUT /api/reports/{id}` with a valid body for Citizen B's report and for the non-existent ID; compare. 3. As Admin, check that Citizen B's report is unchanged. 4. As Citizen A, send `PUT /api/reports/{id}` with valid changed values for the approved own report; record the status code and body. 5. As Admin, send `GET /api/admin/reports/{id}` and record `publicApproved` and the status |
 | Expected Result | Steps 1–3: identical `404` bodies "Report not found." for the other user's report and the missing report; Citizen B's report is unchanged. Step 4: the PUT succeeds and returns the new values (the success code is not stated in the source documents; it is recorded). Step 5: `publicApproved` is `false` and the status is unchanged. **Pending confirmation (RTM Q1, BR-09):** the code accepts edits at any status, including RESOLVED, but whether this is intended is open. If the approved report used here is RESOLVED, the "edit accepted" result of step 4 stays blocked until Q1 is answered |
-| Actual Result | NOT EXECUTED |
-| Status | PROPOSED / NOT EXECUTED |
+| Actual Result | Partly executed (`otherUsersReportLooksLikeMissingReport`, 2026-11-24), GET only: Citizen A requesting Citizen B's report and a non-existent report both got `404` with identical bodies, and the owner got `200`. Not executed: the PUT checks (steps 2-5) and the approved-report edit (FR-04.5). Evidence: `evidence/api-automation/` |
+| Status | PARTIALLY EXECUTED (GET part only) |
 
 #### API-16 – Direct status PATCH rules and approval revocation
 
@@ -1803,8 +1803,8 @@ Cases that cannot start until a tool, environment or approval is available: UT-1
 | Test Data | JDBC URLs: `jdbc:postgresql://localhost:5432/db`, `jdbc:postgresql://127.0.0.1:5432/db`, `jdbc:postgresql://[::1]:5432/db`, `jdbc:postgresql://<remote host>:5432/db`, `jdbc:mysql://localhost:3306/db` |
 | Test Steps | 1. Call the check with each URL. 2. Record each result |
 | Expected Result | `localhost` and `127.0.0.1`: loopback (true). Remote host: false. `jdbc:mysql:`: false (only loopback PostgreSQL is allowed, FR-06.9). `[::1]`: **Blocked pending confirmation (RTM Q1, §2.6 [I]):** the code compares with `"::1"`, but `URI.getHost()` may return `[::1]` with brackets, so the check may never match. Whether IPv6 loopback is meant to be accepted is not confirmed; record the observed result without judging it |
-| Actual Result | NOT EXECUTED |
-| Status | PROPOSED / NOT EXECUTED |
+| Actual Result | Executed (`AdminSetupRunnerLoopbackTest`, 6 tests, written test-first, 2026-11-24). The method was called after changing it from private to package-private (the refactor approach, in the QA copy only; the project owner's approval is still needed for the original application, section 7.11). Before the change to the check: `localhost` true, `127.0.0.1` true, remote host false, `jdbc:mysql:` false, a URL without the `jdbc:` prefix false, and `[::1]` false (the suspected IPv6 problem was observed). After `[::1]` was added to the host check, all six results were as expected. Whether IPv6 loopback is meant to be accepted is not confirmed (RTM Q1). Evidence: `evidence/tdd/` |
+| Status | EXECUTED (`[::1]` returned false before the change; all six checks as expected after the change in the QA copy; intent unconfirmed, RTM Q1) |
 
 #### UT-15 – `AdminAccountSetupService`
 

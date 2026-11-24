@@ -166,7 +166,7 @@ class PublicCareApiTest {
     /**
      * Characterization test of the OBSERVED behaviour. The proposed API-04 expects 409 for a padded duplicate,
      * but the email is validated (@Email) before AuthService trims it, so surrounding spaces give 400.
-     * Recorded as a finding in evidence/api-automation/README.md; the expected result needs clarification (RTM Q1).
+     * Recorded as a finding in evidence/api-automation/README.md; the expected result needs clarification.
      */
     @Test
     @DisplayName("API-04 (padding): email with surrounding spaces is rejected with 400 before trimming (observed)")
