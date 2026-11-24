@@ -83,6 +83,12 @@
             <artifactId>h2</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- API automation (Section 3.6): REST Assured; version managed by Spring Boot -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <scope>test</scope>
+        </dependency>
         <!-- BDD (Section 3.5): Cucumber with Spring and the JUnit Platform -->
         <dependency>
             <groupId>io.cucumber</groupId>
