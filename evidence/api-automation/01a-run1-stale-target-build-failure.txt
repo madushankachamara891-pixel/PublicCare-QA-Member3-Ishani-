@@ -1,0 +1,243 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< lk.publiccare:publiccare-backend >------------------
+[INFO] Building PublicCare Backend 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ publiccare-backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 5 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ publiccare-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ publiccare-backend ---
+[INFO] Copying 2 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ publiccare-backend ---
+[INFO] Recompiling the module because of added or removed source files.
+[INFO] Compiling 17 source files with javac [debug parameters release 21] to target\test-classes
+[INFO] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/PublicReportServiceTest.java: Some input files use unchecked or unsafe operations.
+[INFO] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/PublicReportServiceTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/auth/AuthControllerTest.java:[15,36] package lk.publiccare.backend.config does not exist
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/auth/AuthControllerTest.java:[16,35] cannot access lk.publiccare.backend.admin.AdminSetupConfiguration
+  bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\admin\AdminSetupConfiguration.class
+    unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\admin\AdminSetupConfiguration.class
+    Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/auth/AuthControllerTest.java:[40,18] cannot access lk.publiccare.backend.auth.AuthService
+  bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\auth\AuthService.class
+    unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\auth\AuthService.class
+    Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/auth/AuthControllerTest.java:[56,13] cannot access lk.publiccare.backend.auth.AuthDtos
+  bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\auth\AuthDtos.class
+    unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\auth\AuthDtos.class
+    Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/health/HealthControllerTest.java:[8,36] package lk.publiccare.backend.config does not exist
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/PublicReportServiceTest.java:[27,13] cannot access lk.publiccare.backend.report.ReportRepository
+  bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportRepository.class
+    unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportRepository.class
+    Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/PublicReportServiceTest.java:[28,13] cannot access lk.publiccare.backend.report.ReportProgressUpdateRepository
+  bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportProgressUpdateRepository.class
+    unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportProgressUpdateRepository.class
+    Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/PublicReportServiceTest.java:[29,13] cannot access lk.publiccare.backend.report.PublicReportService
+  bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\PublicReportService.class
+    unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\PublicReportService.class
+    Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[21,36] package lk.publiccare.backend.config does not exist
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[22,38] package lk.publiccare.backend.security does not exist
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[42,18] cannot access lk.publiccare.backend.report.ReportService
+  bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportService.class
+    unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportService.class
+    Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[43,18] cannot access lk.publiccare.backend.report.ReportImageService
+  bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportImageService.class
+    unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportImageService.class
+    Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[44,18] cannot access lk.publiccare.backend.report.ReportProgressService
+  bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportProgressService.class
+    unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportProgressService.class
+    Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[45,18] cannot access lk.publiccare.backend.report.ReportDeletionService
+  bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportDeletionService.class
+    unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportDeletionService.class
+    Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportDeletionJpaTest.java:[37,16] cannot access lk.publiccare.backend.report.ReportImageRepository
+  bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportImageRepository.class
+    unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportImageRepository.class
+    Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportDeletionJpaTest.java:[41,18] cannot access lk.publiccare.backend.report.PrivateImageStorage
+  bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\PrivateImageStorage.class
+    unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\PrivateImageStorage.class
+    Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportImageServiceTest.java:[26,11] cannot access lk.publiccare.backend.report.PublicCareReport
+  bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\PublicCareReport.class
+    unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\PublicCareReport.class
+    Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/auth/AuthControllerTest.java:[35,13] cannot access lk.publiccare.backend.auth.AuthController
+  bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\auth\AuthController.class
+    unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\auth\AuthController.class
+    Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/auth/AuthControllerTest.java:[36,10] cannot find symbol
+  symbol: class WebSecurityConfig
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/auth/AuthControllerTest.java:[46,41] cannot find symbol
+  symbol:   class AdminSetupConfiguration
+  location: class lk.publiccare.backend.auth.AuthControllerTest
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/health/HealthControllerTest.java:[15,13] cannot access lk.publiccare.backend.health.HealthController
+  bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\health\HealthController.class
+    unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\health\HealthController.class
+    Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/health/HealthControllerTest.java:[16,9] cannot find symbol
+  symbol: class WebSecurityConfig
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[37,14] cannot access lk.publiccare.backend.report.ReportController
+  bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportController.class
+    unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportController.class
+    Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[37,38] cannot access lk.publiccare.backend.report.AdminReportController
+  bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\AdminReportController.class
+    unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\AdminReportController.class
+    Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[37,67] cannot access lk.publiccare.backend.report.PublicReportController
+  bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\PublicReportController.class
+    unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\PublicReportController.class
+    Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[38,9] cannot find symbol
+  symbol: class WebSecurityConfig
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/PublicReportServiceTest.java:[84,96] incompatible types: cannot infer type-variable(s) U,S
+    (argument mismatch; java.lang.Class<org.springframework.data.jpa.domain.Specification> cannot be converted to java.lang.Class<S>)
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[49,70] cannot find symbol
+  symbol:   class PublicCarePrincipal
+  location: class lk.publiccare.backend.report.ReportControllerTest
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[53,9] cannot find symbol
+  symbol:   class PublicCarePrincipal
+  location: class lk.publiccare.backend.report.ReportControllerTest
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[53,45] cannot find symbol
+  symbol:   class PublicCarePrincipal
+  location: class lk.publiccare.backend.report.ReportControllerTest
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[245,37] cannot find symbol
+  symbol:   class PublicCarePrincipal
+  location: class lk.publiccare.backend.report.ReportControllerTest
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportServiceTest.java:[81,96] incompatible types: cannot infer type-variable(s) U,S
+    (argument mismatch; java.lang.Class<org.springframework.data.jpa.domain.Specification> cannot be converted to java.lang.Class<S>)
+[INFO] 32 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.495 s
+[INFO] Finished at: 2026-11-24T09:22:07+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.14.1:testCompile (default-testCompile) on project publiccare-backend: Compilation failure: Compilation failure: 
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/auth/AuthControllerTest.java:[15,36] package lk.publiccare.backend.config does not exist
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/auth/AuthControllerTest.java:[16,35] cannot access lk.publiccare.backend.admin.AdminSetupConfiguration
+[ERROR]   bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\admin\AdminSetupConfiguration.class
+[ERROR]     unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\admin\AdminSetupConfiguration.class
+[ERROR]     Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/auth/AuthControllerTest.java:[40,18] cannot access lk.publiccare.backend.auth.AuthService
+[ERROR]   bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\auth\AuthService.class
+[ERROR]     unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\auth\AuthService.class
+[ERROR]     Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/auth/AuthControllerTest.java:[56,13] cannot access lk.publiccare.backend.auth.AuthDtos
+[ERROR]   bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\auth\AuthDtos.class
+[ERROR]     unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\auth\AuthDtos.class
+[ERROR]     Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/health/HealthControllerTest.java:[8,36] package lk.publiccare.backend.config does not exist
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/PublicReportServiceTest.java:[27,13] cannot access lk.publiccare.backend.report.ReportRepository
+[ERROR]   bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportRepository.class
+[ERROR]     unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportRepository.class
+[ERROR]     Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/PublicReportServiceTest.java:[28,13] cannot access lk.publiccare.backend.report.ReportProgressUpdateRepository
+[ERROR]   bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportProgressUpdateRepository.class
+[ERROR]     unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportProgressUpdateRepository.class
+[ERROR]     Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/PublicReportServiceTest.java:[29,13] cannot access lk.publiccare.backend.report.PublicReportService
+[ERROR]   bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\PublicReportService.class
+[ERROR]     unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\PublicReportService.class
+[ERROR]     Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[21,36] package lk.publiccare.backend.config does not exist
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[22,38] package lk.publiccare.backend.security does not exist
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[42,18] cannot access lk.publiccare.backend.report.ReportService
+[ERROR]   bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportService.class
+[ERROR]     unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportService.class
+[ERROR]     Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[43,18] cannot access lk.publiccare.backend.report.ReportImageService
+[ERROR]   bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportImageService.class
+[ERROR]     unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportImageService.class
+[ERROR]     Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[44,18] cannot access lk.publiccare.backend.report.ReportProgressService
+[ERROR]   bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportProgressService.class
+[ERROR]     unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportProgressService.class
+[ERROR]     Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[45,18] cannot access lk.publiccare.backend.report.ReportDeletionService
+[ERROR]   bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportDeletionService.class
+[ERROR]     unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportDeletionService.class
+[ERROR]     Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportDeletionJpaTest.java:[37,16] cannot access lk.publiccare.backend.report.ReportImageRepository
+[ERROR]   bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportImageRepository.class
+[ERROR]     unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportImageRepository.class
+[ERROR]     Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportDeletionJpaTest.java:[41,18] cannot access lk.publiccare.backend.report.PrivateImageStorage
+[ERROR]   bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\PrivateImageStorage.class
+[ERROR]     unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\PrivateImageStorage.class
+[ERROR]     Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportImageServiceTest.java:[26,11] cannot access lk.publiccare.backend.report.PublicCareReport
+[ERROR]   bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\PublicCareReport.class
+[ERROR]     unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\PublicCareReport.class
+[ERROR]     Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/auth/AuthControllerTest.java:[35,13] cannot access lk.publiccare.backend.auth.AuthController
+[ERROR]   bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\auth\AuthController.class
+[ERROR]     unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\auth\AuthController.class
+[ERROR]     Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/auth/AuthControllerTest.java:[36,10] cannot find symbol
+[ERROR]   symbol: class WebSecurityConfig
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/auth/AuthControllerTest.java:[46,41] cannot find symbol
+[ERROR]   symbol:   class AdminSetupConfiguration
+[ERROR]   location: class lk.publiccare.backend.auth.AuthControllerTest
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/health/HealthControllerTest.java:[15,13] cannot access lk.publiccare.backend.health.HealthController
+[ERROR]   bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\health\HealthController.class
+[ERROR]     unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\health\HealthController.class
+[ERROR]     Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/health/HealthControllerTest.java:[16,9] cannot find symbol
+[ERROR]   symbol: class WebSecurityConfig
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[37,14] cannot access lk.publiccare.backend.report.ReportController
+[ERROR]   bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportController.class
+[ERROR]     unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\ReportController.class
+[ERROR]     Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[37,38] cannot access lk.publiccare.backend.report.AdminReportController
+[ERROR]   bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\AdminReportController.class
+[ERROR]     unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\AdminReportController.class
+[ERROR]     Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[37,67] cannot access lk.publiccare.backend.report.PublicReportController
+[ERROR]   bad class file: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\PublicReportController.class
+[ERROR]     unable to access file: java.nio.file.NoSuchFileException: C:\Users\sandu\Downloads\PublicCare-QA-Member3-Ishani--main\PublicCare-QA-Member3-Ishani--main\project\backend\target\classes\lk\publiccare\backend\report\PublicReportController.class
+[ERROR]     Please remove or make sure it appears in the correct subdirectory of the classpath.
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[38,9] cannot find symbol
+[ERROR]   symbol: class WebSecurityConfig
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/PublicReportServiceTest.java:[84,96] incompatible types: cannot infer type-variable(s) U,S
+[ERROR]     (argument mismatch; java.lang.Class<org.springframework.data.jpa.domain.Specification> cannot be converted to java.lang.Class<S>)
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[49,70] cannot find symbol
+[ERROR]   symbol:   class PublicCarePrincipal
+[ERROR]   location: class lk.publiccare.backend.report.ReportControllerTest
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[53,9] cannot find symbol
+[ERROR]   symbol:   class PublicCarePrincipal
+[ERROR]   location: class lk.publiccare.backend.report.ReportControllerTest
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[53,45] cannot find symbol
+[ERROR]   symbol:   class PublicCarePrincipal
+[ERROR]   location: class lk.publiccare.backend.report.ReportControllerTest
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportControllerTest.java:[245,37] cannot find symbol
+[ERROR]   symbol:   class PublicCarePrincipal
+[ERROR]   location: class lk.publiccare.backend.report.ReportControllerTest
+[ERROR] /C:/Users/sandu/Downloads/PublicCare-QA-Member3-Ishani--main/PublicCare-QA-Member3-Ishani--main/project/backend/src/test/java/lk/publiccare/backend/report/ReportServiceTest.java:[81,96] incompatible types: cannot infer type-variable(s) U,S
+[ERROR]     (argument mismatch; java.lang.Class<org.springframework.data.jpa.domain.Specification> cannot be converted to java.lang.Class<S>)
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
