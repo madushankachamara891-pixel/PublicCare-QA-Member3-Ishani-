@@ -13,7 +13,7 @@ MEMBER_TASKS.md asks to investigate "UI automation using Selenium, if appropriat
 ## Why UI automation was not implemented
 
 1. A browser test needs four things running together: the Vite frontend, the Spring Boot backend, a database and a browser with its driver. The existing automated tests avoid a real database by using H2 with Flyway disabled and with the workaround for the PostgreSQL-generated `reference` column. Wiring the frontend to such a backend would need extra configuration (API base URL, CORS origin, cookies across origins) that was not verified.
-2. The CSRF cookie and the `SameSite=Lax` session cookie behave differently when the frontend (Vite dev server) and the backend run on different ports, so this setup could give failures that are not application defects.
+2. The full browser setup (frontend, backend, CORS origin and a test database together) was not configured or tried in this work, so no claim is made about how well it would run. It is feasible, but needs more time than the API tests.
 3. Selenium is not installed and would add a dependency, a browser and a driver to the project and to CI. CLAUDE.md requires dependencies to be explained and approved first. The value was judged low compared with the API and BDD automation already running against the real backend.
 4. The risks that the proposed UI cases (UI-01 to UI-14) check on the client (form validation, role-based landing, admin gate, image preview) are mostly front-end logic that a frontend unit test framework (Vitest) would cover more cheaply. Adding Vitest changes the application project and needs the project owner's approval (test plan section 7.11).
 
