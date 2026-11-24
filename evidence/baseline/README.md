@@ -14,6 +14,6 @@ Purpose: record the actual state of the existing backend tests before any change
 | Total time | 01:05 min (includes first-time dependency download) |
 
 Notes:
-- The QA documents say 73 `@Test` methods. The Surefire run reports 72 tests. The difference is not investigated yet; do not claim a reason until it is checked.
+- The QA documents say 73 `@Test` methods. The Surefire run reports 72 tests. Checked later: a text search for `@Test` also matches `@TestConfiguration` (`AuthControllerTest.java:45`), so the real count is 72. See `../tdd/README.md`, Step 1.
 - Tests ran on Java 25, not 21. CI (Java 21) must be run separately.
 - Files: `environment.txt` (tool versions), `mvn-test-output.txt` (full console output).

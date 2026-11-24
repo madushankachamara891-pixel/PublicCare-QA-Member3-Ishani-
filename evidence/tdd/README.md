@@ -16,3 +16,31 @@ Application files changed (both in `project/backend`):
 - New test: `src/test/java/lk/publiccare/backend/admin/AdminSetupRunnerLoopbackTest.java`.
 
 Limitation: runs were on Java 25, not the project's Java 21. The change is in the isolated QA copy only; per the test plan (7.11) the project owner would need to approve it for the original repository.
+
+## Step 1: Inspection of the existing backend JUnit tests (before choosing the TDD target)
+
+Location: `project/backend/src/test/java/lk/publiccare/backend/`. The existing tests were read and then run unchanged (see `../baseline/`: 72 tests, 0 failures).
+
+| Package | Test class | Tests run (Surefire) | Style |
+|---|---|---|---|
+| admin | AdminAccountSetupServiceTest | 6 | Mockito unit test |
+| admin | AdminSetupConfigurationTest | 1 | Spring context test |
+| auth | AuthControllerTest | 7 | `@WebMvcTest` with Spring Security Test |
+| auth | AuthServiceTest | 4 | Mockito unit test |
+| health | HealthControllerTest | 3 | `@WebMvcTest` |
+| report | PublicReportServiceTest | 3 | Mockito unit test |
+| report | ReportControllerTest | 25 | `@WebMvcTest` |
+| report | ReportDeletionJpaTest | 1 | `@DataJpaTest` on H2 |
+| report | ReportDeletionServiceTest | 4 | Mockito unit test |
+| report | ReportImageServiceTest | 5 | Mockito unit test |
+| report | ReportProgressServiceTest | 7 | Mockito unit test |
+| report | ReportServiceTest | 6 | Mockito unit test |
+| | **Total** | **72** | |
+
+Findings used to select the TDD target:
+- Tools present: JUnit 5, Mockito, Spring Boot test slices, Spring Security Test, H2.
+- No existing test referenced `AdminSetupRunner` (searched `src/test` for `AdminSetupRunner` and `isLoopback`: no match before the new test was added). This is the gap UT-14 in `qa/PART01_REQUIREMENTS_AND_RTM.md`.
+- The analysis report (section 2.6) suspected that the `::1` check never matches because `URI.getHost()` returns `[::1]`. The code at that time (`AdminSetupRunner.java`, `host.equals("::1")`) agreed with the suspicion, so a failing test was expected but not assumed; it was confirmed by the Red run above.
+- The existing tests were not relabelled as TDD. Only `AdminSetupRunnerLoopbackTest` was written test-first.
+
+Note on the count: the QA documents say 73 `@Test` methods. A text search for `@Test` finds 73 matches in the existing tests, but one match is the annotation `@TestConfiguration` at `AuthControllerTest.java:45`, which is not a test method. The real number of test methods, and the number Surefire ran, is 72.
