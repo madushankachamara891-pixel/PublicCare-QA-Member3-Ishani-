@@ -1,0 +1,73 @@
+name: CI
+
+# Section 3.6: test automation and CI/CD for the isolated PublicCare QA copy.
+# Runs on every push and pull request. No secrets are used. Backend tests use mocks and an
+# in-memory H2 database, so no PostgreSQL service is needed.
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    name: Backend (Java 21, Maven Wrapper)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: project/backend
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: project/backend/pom.xml
+
+      - name: Make the Maven Wrapper executable
+        run: chmod +x mvnw
+
+      - name: Run backend tests (JUnit, TDD test, REST Assured API tests, Cucumber scenarios)
+        run: ./mvnw -B test
+
+      - name: Upload backend test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-test-reports
+          path: |
+            project/backend/target/surefire-reports/
+            project/backend/target/cucumber-reports/
+          if-no-files-found: warn
+
+  frontend:
+    name: Frontend (Node.js, lint and build)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: project
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: project/package-lock.json
+
+      - name: Install frontend dependencies
+        run: npm ci
+
+      - name: Run frontend lint
+        run: npm run lint
+
+      - name: Run frontend build
+        run: npm run build
